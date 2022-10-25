@@ -20,7 +20,7 @@ export default function Home() {
         <title>Home - williamk19</title>
       </Head>
       <Navbar />
-      {/* <Flex
+      <Flex
         h='100vh'
         p='2rem'
         flexDirection='column'
@@ -35,11 +35,11 @@ export default function Home() {
             seconds={seconds}
           />
         </Box>
-        <Spacer/>
+        <Spacer />
         <Box>
           <Footer />
         </Box>
-      </Flex> */}
+      </Flex>
     </div>
   );
 }
