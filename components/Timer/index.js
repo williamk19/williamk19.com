@@ -12,7 +12,6 @@ const Timer = ({ days, hours, minutes, seconds }) => {
           <Text>
             {days}
           </Text>
-
         </Box>
         <Text>
           :
@@ -54,7 +53,7 @@ const Timer = ({ days, hours, minutes, seconds }) => {
           Minutes
         </Text>
         <Text w={['2rem', '3rem', '4rem']} align={'center'}>
-          Seconds
+          Second
         </Text>
       </Flex>
     </Box>

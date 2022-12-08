@@ -11,8 +11,8 @@ const Timer = dynamic(
   { ssr: false }
 );
 
-export default function Home() {
-  let [days, hours, minutes, seconds] = useTimer('Dec 25, 2022 14:20:00');
+export default function Countdown() {
+  let [days, hours, minutes, seconds] = useTimer('Mar 25, 2023 14:20:00');
 
   return (
     <div className={styles.container}>

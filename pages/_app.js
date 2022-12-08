@@ -2,19 +2,8 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
-import { extendTheme } from '@chakra-ui/react'
+import theme from '../theme/theme'
 import '@fontsource/montserrat';
-// const config = {
-//   initialColorMode: 'light',
-//   useSystemColorMode: false,
-// }
-
-const theme = extendTheme({
-  fonts: {
-    heading: `'montserrat'`,
-    body: `'montserrat'`,
-  },
-})
 
 function MyApp({ Component, pageProps }) {
   return (
