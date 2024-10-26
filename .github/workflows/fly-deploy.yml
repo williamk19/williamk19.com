@@ -10,7 +10,8 @@ jobs:
     name: Deploy app
     runs-on: ubuntu-latest
     concurrency: deploy-group    # optional: ensure only one action runs at a time
-    environment: production
+    env:
+      NEXT_PUBLIC_PB_URL: "https://pb.williamk19.my.id"
 
     steps:
       - uses: actions/checkout@v4
