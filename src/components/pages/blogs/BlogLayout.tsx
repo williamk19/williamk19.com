@@ -46,6 +46,7 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
               placeholder='blur'
               blurDataURL={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
               fill
+              sizes='(max-width: 768px) 100vw, (min-width: 769px) 50vw'
               src={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
               alt={`${blog.slug}-img`}
             />

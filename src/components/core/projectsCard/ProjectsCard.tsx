@@ -36,9 +36,9 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
             <Image
               src={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${project.collectionId}/${project.id}/${project.thumbnail}`}
               alt={`${project.title.toLowerCase()}-thumb`}
-              sizes='100vw'
               priority={true}
               fill
+              sizes='(max-width: 768px) 100vw, (min-width: 769px) 50vw'
               style={{
                 objectFit: 'cover',
               }}
