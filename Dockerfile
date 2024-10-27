@@ -11,9 +11,6 @@ WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV="production"
-RUN npm install --global yarn --force
-RUN yarn set version 1.22.22
-RUN yarn cache clean
 
 
 # Throw-away build stage to reduce size of final image
@@ -24,8 +21,8 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
 
 # Install node modules
-COPY .yarnrc package.json yarn.lock ./
-RUN yarn install --frozen-lockfile --production=false
+COPY package.json package-lock.json ./
+RUN npm install
 
 # Copy application code
 COPY . .
@@ -35,10 +32,7 @@ ARG NEXT_PUBLIC_PB_URL
 ENV NEXT_PUBLIC_PB_URL=${NEXT_PUBLIC_PB_URL}
 
 # Build application
-RUN yarn run build
-
-# Remove development dependencies
-RUN yarn install --production=true
+RUN npm run build
 
 
 # Final stage for app image
@@ -49,4 +43,4 @@ COPY --from=build /app /app
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD [ "yarn", "run", "start" ]
+CMD [ "npm", "run", "start" ]

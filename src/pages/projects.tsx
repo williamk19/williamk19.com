@@ -27,8 +27,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     sort: '-created',
   });
 
-  console.log(projects);
-
   return {
     props: {
       ...chakraProps.props,
