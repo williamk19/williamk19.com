@@ -13,7 +13,7 @@ const nextConfig = {
       },
     ],
   },
-  webpack: (config: any) => {
+  webpack: (config) => {
     config.experiments = {
       ...config.experiments,
       topLevelAwait: true,

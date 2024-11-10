@@ -5,8 +5,10 @@ import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import defaultSEOConfig from '../../next-seo.config';
 import Layout from '../components/layout/Layout';
+import { ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
-import { Chakra } from '@/lib/chakra/Chakra';
+import { Provider } from '@/components/ui/provider';
+import theme from '@/themes/theme';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -37,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
           rel='manifest'
           href='/icon/site.webmanifest'></link>
       </Head>
-      <Chakra cookies={pageProps.cookies}>
+      <ChakraProvider value={theme}>
         <DefaultSeo {...defaultSEOConfig} />
         <Layout>
           <NextNProgress
@@ -47,7 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
           />
           <Component {...pageProps} />
         </Layout>
-      </Chakra>
+      </ChakraProvider>
     </>
   );
 }

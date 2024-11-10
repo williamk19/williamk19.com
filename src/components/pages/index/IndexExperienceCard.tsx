@@ -1,5 +1,6 @@
+import { useColorMode } from '@/components/ui/color-mode';
 import { Experience } from '@/types/experience.type';
-import { Box, Flex, Show, Text, useColorMode } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { Key } from 'react';
 
 type IndexExperienceCardProps = {
@@ -35,8 +36,8 @@ const IndexExperienceCard = ({ id, experience }: IndexExperienceCardProps) => {
         w='100%'
         p={4}
         transition={'transform 0.4s ease-out'}
-        sx={{
-          ':hover': {
+        css={{
+          '&:hover': {
             transform: 'scale(1.025)',
           },
         }}>
@@ -61,7 +62,7 @@ const IndexExperienceCard = ({ id, experience }: IndexExperienceCardProps) => {
             textAlign={['left', 'right']}
             fontSize={['xs', 'xs', 'sm']}>
             <Text>{`${monthYearStart} - ${monthYearEnd}`}</Text>
-            {experience.location && <Show below='sm'>|</Show>}
+            {experience.location && <Box hideBelow={'md'}>|</Box>}
             <Text>{experience?.location}</Text>
           </Flex>
         </Flex>

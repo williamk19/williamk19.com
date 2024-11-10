@@ -9,10 +9,10 @@ import {
   Heading,
   Stack,
   Text,
-  useColorMode,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import he from 'he';
+import { useColorMode } from '@/components/ui/color-mode';
 
 type BlogCardProps = {
   blog: Blog;

@@ -1,25 +1,26 @@
-import { extendTheme } from '@chakra-ui/react';
+import { createSystem, defaultConfig } from '@chakra-ui/react';
+import { StyleFunctionProps } from '@chakra-ui/system';
 import { mode } from '@chakra-ui/theme-tools';
-import type { StyleFunctionProps } from '@chakra-ui/styled-system';
 import '@fontsource/figtree';
 
-const theme = extendTheme({
-  fonts: {
-    heading: `'Figtree', sans-serif`,
-    body: `'Figtree', sans-serif`,
-  },
-  config: {
-    disableTransitionOnChange: false,
-  },
-  styles: {
-    global: (props: StyleFunctionProps) => ({
-      body: {
-        bg: mode('white', 'gray.800')(props),
-        color: mode('black', 'white')(props),
-        fontFamily: 'Figtree',
+const theme = createSystem(defaultConfig, {
+  theme: {
+    tokens: {
+      fonts: {
+        heading: { value: `'Figtree', sans-serif` },
+        body: { value: `'Figtree', sans-serif` },
       },
-    }),
+    },
   },
+  // styles: {
+  //   global: (props: StyleFunctionProps) => ({
+  //     body: {
+  //       bg: mode('white', 'gray.800')(props),
+  //       color: mode('black', 'white')(props),
+  //       fontFamily: 'Figtree',
+  //     },
+  //   }),
+  // },
 });
 
 export default theme;

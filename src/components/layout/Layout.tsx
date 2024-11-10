@@ -13,7 +13,7 @@ export default function Layout({ children }: Props) {
       <Box transition='0.5s ease-out'>
         <Navbar />
         <Container
-          maxW='container.md'
+          maxWidth={'breakpoint-md'}
           px={[6, 6, 0]}>
           {children}
           <Footer />

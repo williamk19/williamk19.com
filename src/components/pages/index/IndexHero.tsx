@@ -1,17 +1,16 @@
 import { Resume } from '@/types/resume.type';
 import { ChatIcon, DownloadIcon } from '@chakra-ui/icons';
 import {
-  Avatar,
-  AvatarBadge,
   Button,
   Container,
   Flex,
   Heading,
   Text,
-  Tooltip,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Avatar } from '@/components/ui/avatar';
+import { Tooltip } from '@/components/ui/tooltip';
 
 export default function IndexHero({ resume }: { resume: Resume }) {
   const [isTooltipOpen, setIsTooltipOpen] = useState<boolean>(false);
@@ -70,7 +69,8 @@ export default function IndexHero({ resume }: { resume: Resume }) {
                 label='Hello 👋!'
                 aria-label='A tooltip'
                 placement='left-end'>
-                <AvatarBadge
+                <>d</>
+                {/* <AvatarBadge
                   onMouseEnter={() => setIsTooltipOpen(true)}
                   onMouseLeave={() => setIsTooltipOpen(false)}
                   onClick={() => setIsTooltipOpen(!isTooltipOpen)}
@@ -78,7 +78,7 @@ export default function IndexHero({ resume }: { resume: Resume }) {
                   border={'2px solid #fff'}
                   bg='gray.700'>
                   <ChatIcon w={'1rem'} />
-                </AvatarBadge>
+                </AvatarBadge> */}
               </Tooltip>
             </Avatar>
           </Flex>

@@ -1,17 +1,8 @@
-import {
-  Box,
-  Flex,
-  Text,
-  Link,
-  useColorMode,
-  useBreakpoint,
-} from '@chakra-ui/react';
-import NextLink from 'next/link';
+import { Box, Flex, Text, useBreakpoint } from '@chakra-ui/react';
 import FooterLink from './FooterLink';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { colorMode } = useColorMode();
   const breakpoint = useBreakpoint({ ssr: true });
 
   return (
