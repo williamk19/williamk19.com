@@ -1,5 +1,5 @@
 import { Resume } from '@/types/resume.type';
-import { HiDownload } from 'react-icons/hi';
+import { FaRegFilePdf } from 'react-icons/fa';
 import {
   Box,
   Button,
@@ -61,11 +61,11 @@ export default function IndexHero({ resume }: { resume: Resume }) {
                 colorPalette={'blue'}
                 fontWeight={'semibold'}
                 fontSize={'md'}
-                gap={'1'}>
-                Resume
-                <Icon fontSize={'xl'}>
-                  <HiDownload />
+                gap={'1.5'}>
+                <Icon>
+                  <FaRegFilePdf />
                 </Icon>
+                Resume
               </Button>
             </Link>
           </Flex>

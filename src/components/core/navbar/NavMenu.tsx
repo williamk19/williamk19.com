@@ -1,5 +1,7 @@
-import { IconButton, Link, Container } from '@chakra-ui/react';
+import { IconButton, Link, Box } from '@chakra-ui/react';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdOutlineMarkUnreadChatAlt } from 'react-icons/md';
+import { VscBriefcase } from 'react-icons/vsc';
 import { SlDocs } from 'react-icons/sl';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,7 +10,6 @@ import { useColorMode } from '@/components/ui/color-mode';
 import {
   MenuContent,
   MenuItem,
-  MenuItemCommand,
   MenuRoot,
   MenuTrigger,
 } from '@/components/ui/menu';
@@ -18,9 +19,11 @@ export default function NavMenu() {
   const { colorMode } = useColorMode();
 
   return (
-    <Container hideFrom={'md'}>
+    <Box hideFrom={'md'}>
       <MenuRoot>
         <IconButton
+          padding={'unset'}
+          width={'fit-content'}
           as={MenuTrigger}
           aria-label='page-options'
           variant={'outline'}>
@@ -28,30 +31,43 @@ export default function NavMenu() {
         </IconButton>
         <MenuContent>
           <MenuItem
-            icon={<SlDocs />}
-            css={linkMenuStyles(pathname, '/blog', colorMode)}
-            value=''>
+            asChild
+            css={linkMenuStyles(pathname, '/blog', colorMode!)}
+            value='blogs'>
             <Link
               _hover={{ textDecoration: 'none' }}
               as={NextLink}
               href='/blog'>
+              <SlDocs />
               Blogs
             </Link>
           </MenuItem>
-          <MenuItem value='new-file-a'>
-            New File... <MenuItemCommand>⌘N</MenuItemCommand>
+          <MenuItem
+            asChild
+            css={linkMenuStyles(pathname, '/blog', colorMode!)}
+            value='projects'>
+            <Link
+              _hover={{ textDecoration: 'none' }}
+              as={NextLink}
+              href='/projects'>
+              <VscBriefcase />
+              Projects
+            </Link>
           </MenuItem>
-          <MenuItem value='new-win-a'>
-            New Window <MenuItemCommand>⌘⇧N</MenuItemCommand>
-          </MenuItem>
-          <MenuItem value='open-file-a'>
-            Open File... <MenuItemCommand>⌘O</MenuItemCommand>
-          </MenuItem>
-          <MenuItem value='export-a'>
-            Export <MenuItemCommand>⌘S</MenuItemCommand>
+          <MenuItem
+            asChild
+            css={linkMenuStyles(pathname, '/blog', colorMode!)}
+            value='message'>
+            <Link
+              _hover={{ textDecoration: 'none' }}
+              as={NextLink}
+              href='/message'>
+              <MdOutlineMarkUnreadChatAlt />
+              Message
+            </Link>
           </MenuItem>
         </MenuContent>
       </MenuRoot>
-    </Container>
+    </Box>
   );
 }

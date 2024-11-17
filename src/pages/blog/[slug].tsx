@@ -3,7 +3,6 @@ import pb from '@/lib/pocketbase';
 import { Blog } from '@/types/blogs.type';
 import { GetServerSidePropsContext, GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
-import { getServerSideProps as chakraGetServerSideProps } from '@/lib/chakra/Chakra';
 
 type BlogPageProps = {
   blog: Blog;
@@ -50,7 +49,6 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext,
 ) => {
   const { slug } = context.params as ParamsType;
-  const chakraProps = await chakraGetServerSideProps(context);
 
   const blog = await pb
     .collection<Blog>('blogs')
@@ -58,7 +56,6 @@ export const getServerSideProps = async (
 
   return {
     props: {
-      ...chakraProps.props,
       blog,
     },
   };

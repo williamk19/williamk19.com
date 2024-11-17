@@ -16,7 +16,7 @@ export default function IndexMessage() {
             mb='4'>
             <Heading
               mb='2'
-              size={'lg'}>
+              size={['2xl', '2xl', '3xl']}>
               Message Me
             </Heading>
             <Text>Drop some message to williamk19&apos;s email</Text>

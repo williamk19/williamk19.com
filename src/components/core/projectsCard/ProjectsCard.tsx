@@ -22,10 +22,8 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
         boxShadow='md'
         overflow={'hidden'}
         transition={'transform 0.4s ease-out'}
-        css={{
-          ':hover': {
-            transform: 'scale(1.045)',
-          },
+        _hover={{
+          transform: 'scale(1.045)',
         }}>
         {usingImage && (
           <Box
@@ -51,7 +49,7 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
           py={5}>
           <Text
             fontSize='xl'
-            // fontWeight='bold'
+            fontWeight='bold'
             mb={2}>
             {project.title}
           </Text>

@@ -49,8 +49,7 @@ const IndexExperienceCard = ({ id, experience }: IndexExperienceCardProps) => {
           <Box>
             <Text
               fontSize='xl'
-            // fontWeight='bold'>
-            >
+              fontWeight='bold'>
               {experience.workplace}
             </Text>
             <Text>{experience.position}</Text>
@@ -59,11 +58,11 @@ const IndexExperienceCard = ({ id, experience }: IndexExperienceCardProps) => {
             mt={['2', '0']}
             direction={['row', 'column']}
             gap={['1', '0']}
-            // fontWeight={['bold', 'bold', 'medium']}
+            fontWeight={['bold', 'bold', 'medium']}
             textAlign={['left', 'right']}
             fontSize={['xs', 'xs', 'sm']}>
             <Text>{`${monthYearStart} - ${monthYearEnd}`}</Text>
-            {experience.location && <Box hideBelow={'md'}>|</Box>}
+            {experience.location && <Box hideFrom={'sm'}>|</Box>}
             <Text>{experience?.location}</Text>
           </Flex>
         </Flex>

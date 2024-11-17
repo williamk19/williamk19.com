@@ -1,4 +1,4 @@
-import { Text, Button, Input, Textarea, Box, Link } from '@chakra-ui/react';
+import { Text, Button, Textarea, Box, Link } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
 export default function MessageForm() {
@@ -26,18 +26,22 @@ export default function MessageForm() {
         </label>
         <Textarea
           onChange={(e) => setMessage(e.target.value)}
-          borderColor={'gray.500'}
           shadow='md'
           placeholder='Hi william 👋, ...'
           size='sm'
           height={'32'}
           borderRadius={'md'}
           resize='none'
-          border={'2px'}
           fontSize={'md'}
           fontWeight={'500'}
+          variant={'outline'}
+          border={'2px solid'}
+          borderColor={'gray.500'}
           _hover={{
-            borderColor: 'gray.500',
+            borderColor: 'gray.900',
+          }}
+          _active={{
+            borderColor: 'gray.900',
           }}
         />
       </Box>
