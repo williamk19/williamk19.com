@@ -7,7 +7,7 @@ export default function Message() {
   return (
     <>
       <NextSeo title='Message' />
-      <MessageLayout />
+      {/* <MessageLayout /> */}
     </>
   );
 }

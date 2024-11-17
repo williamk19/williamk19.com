@@ -1,16 +1,20 @@
 import { Resume } from '@/types/resume.type';
-import { ChatIcon, DownloadIcon } from '@chakra-ui/icons';
+import { HiDownload } from 'react-icons/hi';
 import {
+  Box,
   Button,
   Container,
   Flex,
   Heading,
+  Icon,
+  IconButton,
+  Image,
   Text,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Avatar } from '@/components/ui/avatar';
 import { Tooltip } from '@/components/ui/tooltip';
+import { RiChat1Line } from 'react-icons/ri';
 
 export default function IndexHero({ resume }: { resume: Resume }) {
   const [isTooltipOpen, setIsTooltipOpen] = useState<boolean>(false);
@@ -27,13 +31,14 @@ export default function IndexHero({ resume }: { resume: Resume }) {
           direction={['column-reverse', 'column-reverse', 'row']}>
           <Flex direction={'column'}>
             <Heading
+              size={['2xl', '3xl', '4xl']}
               fontWeight='black'
               letterSpacing='wide'>
               William Kurniawan
             </Heading>
             <Text
               letterSpacing='wider'
-              fontSize={'xl'}
+              fontSize={['md', 'lg', 'xl']}
               fontWeight={'semibold'}>
               Software Engineer 💻 | Frontend
             </Text>
@@ -47,41 +52,61 @@ export default function IndexHero({ resume }: { resume: Resume }) {
               technologies in the future and collaborating on open source
               projects.
             </Text>
-            <Button
-              width={'32'}
-              mt={'5'}
-              colorScheme='blue'>
-              <Link
-                target='_blank'
-                href={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${resume.collectionId}/${resume.id}/${resume.document}`}>
+            <Link
+              target='_blank'
+              href={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${resume.collectionId}/${resume.id}/${resume.document}`}>
+              <Button
+                width={'32'}
+                mt={'5'}
+                colorPalette={'blue'}
+                fontWeight={'semibold'}
+                fontSize={'md'}
+                gap={'1'}>
                 Resume
-                <DownloadIcon ml={'2'} />
-              </Link>
-            </Button>
+                <Icon fontSize={'xl'}>
+                  <HiDownload />
+                </Icon>
+              </Button>
+            </Link>
           </Flex>
-          <Flex pr='5'>
-            <Avatar
-              boxShadow='2xl'
-              size='2xl'
-              src='/images/profile-pic.png'>
-              <Tooltip
-                isOpen={isTooltipOpen}
-                label='Hello 👋!'
-                aria-label='A tooltip'
-                placement='left-end'>
-                <>d</>
-                {/* <AvatarBadge
-                  onMouseEnter={() => setIsTooltipOpen(true)}
-                  onMouseLeave={() => setIsTooltipOpen(false)}
-                  onClick={() => setIsTooltipOpen(!isTooltipOpen)}
-                  boxSize='0.7em'
-                  border={'2px solid #fff'}
-                  bg='gray.700'>
-                  <ChatIcon w={'1rem'} />
-                </AvatarBadge> */}
-              </Tooltip>
-            </Avatar>
-          </Flex>
+          <Box
+            pr={'5'}
+            minWidth={'36'}
+            maxWidth={'3/12'}>
+            <Box
+              position={'relative'}
+              borderRadius={'full'}
+              boxShadow={'2xl'}>
+              <Image
+                width={'fit-content'}
+                height={'fit-content'}
+                src='/images/profile-pic.png'
+                alt='William Kurniawan emoji'
+                borderRadius='full'
+              />
+              <Box
+                position={'absolute'}
+                bottom={-2}
+                right={0}>
+                <Tooltip
+                  open={isTooltipOpen}
+                  content={'Hello 👋!'}
+                  aria-label='A tooltip'>
+                  <IconButton
+                    onMouseEnter={() => setIsTooltipOpen(true)}
+                    onMouseLeave={() => setIsTooltipOpen(false)}
+                    borderRadius={'full'}
+                    variant='outline'
+                    size='sm'
+                    border={'2px solid #fff'}
+                    bg='gray.700'
+                    color={'white'}>
+                    <RiChat1Line fontWeight={'800'} />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            </Box>
+          </Box>
         </Flex>
       </Container>
     </>

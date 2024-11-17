@@ -1,5 +1,5 @@
 import { useColorMode } from '@/components/ui/color-mode';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { IoMoon, IoSunny } from 'react-icons/io5';
 import { IconButton } from '@chakra-ui/react';
 
 export default function NavThemeToggle() {
@@ -14,7 +14,7 @@ export default function NavThemeToggle() {
       onClick={handleToggleColorMode}
       aria-label='Toggle Color Mode'
       size='md'>
-      {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+      {colorMode === 'light' ? <IoMoon /> : <IoSunny />}
     </IconButton>
   );
 }

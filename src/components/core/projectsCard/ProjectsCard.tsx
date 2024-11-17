@@ -51,7 +51,7 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
           py={5}>
           <Text
             fontSize='xl'
-            fontWeight='bold'
+            // fontWeight='bold'
             mb={2}>
             {project.title}
           </Text>

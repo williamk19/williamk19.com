@@ -13,7 +13,7 @@ export default function Blogs({ blogs }: BlogsProps) {
   return (
     <>
       <NextSeo title='Blogs' />
-      <BlogsLayout blogs={blogs} />
+      {/* <BlogsLayout blogs={blogs} /> */}
     </>
   );
 }

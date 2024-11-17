@@ -14,7 +14,7 @@ export default function Projects({ projects }: ProjectsProps) {
     <>
       <NextSeo title='Projects' />
       <main>
-        <ProjectsLayout projects={projects} />
+        {/* <ProjectsLayout projects={projects} /> */}
       </main>
     </>
   );

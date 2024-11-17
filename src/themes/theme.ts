@@ -1,6 +1,4 @@
 import { createSystem, defaultConfig } from '@chakra-ui/react';
-import { StyleFunctionProps } from '@chakra-ui/system';
-import { mode } from '@chakra-ui/theme-tools';
 import '@fontsource/figtree';
 
 const theme = createSystem(defaultConfig, {
@@ -12,15 +10,6 @@ const theme = createSystem(defaultConfig, {
       },
     },
   },
-  // styles: {
-  //   global: (props: StyleFunctionProps) => ({
-  //     body: {
-  //       bg: mode('white', 'gray.800')(props),
-  //       color: mode('black', 'white')(props),
-  //       fontFamily: 'Figtree',
-  //     },
-  //   }),
-  // },
 });
 
 export default theme;

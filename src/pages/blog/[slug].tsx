@@ -41,7 +41,7 @@ export default function Page({ blog }: BlogPageProps) {
           ],
         }}
       />
-      <BlogLayout blog={blog} />
+      {/* <BlogLayout blog={blog} /> */}
     </>
   );
 }

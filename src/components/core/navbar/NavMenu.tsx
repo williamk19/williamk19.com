@@ -1,20 +1,16 @@
-import { IconButton, Show, Link, Container } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
-import { TfiBriefcase } from 'react-icons/tfi';
+import { IconButton, Link, Container } from '@chakra-ui/react';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { SlDocs } from 'react-icons/sl';
-import { BiMessageDetail } from 'react-icons/bi';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { linkMenuStyles } from '@/styles/styles';
 import { useColorMode } from '@/components/ui/color-mode';
-import { Button } from '@/components/ui/button';
 import {
   MenuContent,
   MenuItem,
   MenuItemCommand,
   MenuRoot,
   MenuTrigger,
-  MenuTriggerItem,
 } from '@/components/ui/menu';
 
 export default function NavMenu() {
@@ -28,7 +24,7 @@ export default function NavMenu() {
           as={MenuTrigger}
           aria-label='page-options'
           variant={'outline'}>
-          <HamburgerIcon />
+          <GiHamburgerMenu />
         </IconButton>
         <MenuContent>
           <MenuItem

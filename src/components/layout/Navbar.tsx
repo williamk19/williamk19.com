@@ -51,7 +51,7 @@ export default function Navbar() {
               as={NextLink}
               fontSize='2xl'
               href='/'
-              fontWeight='bold'
+              // fontWeight='bold'
               lineHeight={`1.5`}
               css={linkHoverStyles(pathname, `/`, colorMode!)}>
               williamk19
