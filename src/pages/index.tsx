@@ -14,11 +14,11 @@ type HomeProps = {
   resume: Resume;
 };
 
-const Home = ({ experiences, projects, resume }: HomeProps) => {
+const Home = ({ experiences, projects }: HomeProps) => {
   return (
     <>
       <NextSeo title='Home' />
-      <IndexHero resume={resume} />
+      <IndexHero />
       <IndexProjects projects={projects} />
       <IndexExperience experiences={experiences} />
       <IndexMessage />
@@ -39,15 +39,10 @@ export async function getStaticProps() {
       sort: '-created',
     });
 
-  const resume = await pb.collection('resumes').getFirstListItem('', {
-    sort: '-created',
-  });
-
   return {
     props: {
       experiences,
       projects,
-      resume,
     },
     revalidate: 60,
   };

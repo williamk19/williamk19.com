@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Adjust DENO_VERSION as desired
-ARG DENO_VERSION=alpine-2.0.6
+ARG DENO_VERSION=alpine-2.1.1
 FROM denoland/deno:${DENO_VERSION} AS base
 
 LABEL fly_launch_runtime="Deno"

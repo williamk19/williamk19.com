@@ -19,7 +19,7 @@ export default function BlogsLayout({ blogs }: BlogsLayoutProps) {
           alignItems='center'>
           <Heading
             mb={'2'}
-            size={'lg'}>
+            size={['2xl', '2xl', '3xl']}>
             Blogs
           </Heading>
           <Text mb={'6'}>{`Share my thoughts and ideas`}</Text>
@@ -29,7 +29,10 @@ export default function BlogsLayout({ blogs }: BlogsLayoutProps) {
           w='100%'
           color='white'>
           {blogs.map((b) => (
-            <BlogsCard key={b.id} blog={b} />
+            <BlogsCard
+              key={b.id}
+              blog={b}
+            />
           ))}
         </Box>
       </Container>

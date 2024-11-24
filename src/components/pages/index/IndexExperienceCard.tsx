@@ -16,13 +16,13 @@ const IndexExperienceCard = ({ id, experience }: IndexExperienceCardProps) => {
     ? new Date(experience.ended_date)
     : 'Present';
 
-  const monthYearStart = `${dateStart.toLocaleString('default', {
+  const monthYearStart = `${dateStart.toLocaleString('en-US', {
     month: 'short',
   })}, ${dateStart.getFullYear()}`;
   const monthYearEnd =
     dateEnd === 'Present'
       ? `Present`
-      : `${dateEnd.toLocaleString('default', {
+      : `${dateEnd.toLocaleString('en-US', {
           month: 'short',
         })}, ${dateEnd.getFullYear()}`;
 

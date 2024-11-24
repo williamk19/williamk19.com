@@ -16,7 +16,7 @@ import { useState } from 'react';
 import { Tooltip } from '@/components/ui/tooltip';
 import { RiChat1Line } from 'react-icons/ri';
 
-export default function IndexHero({ resume }: { resume: Resume }) {
+export default function IndexHero() {
   const [isTooltipOpen, setIsTooltipOpen] = useState<boolean>(false);
 
   return (
@@ -54,7 +54,7 @@ export default function IndexHero({ resume }: { resume: Resume }) {
             </Text>
             <Link
               target='_blank'
-              href={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${resume.collectionId}/${resume.id}/${resume.document}`}>
+              href={`/api/documents/resume`}>
               <Button
                 width={'32'}
                 mt={'5'}

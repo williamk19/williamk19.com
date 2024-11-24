@@ -1,7 +1,6 @@
 import BlogsLayout from '@/components/pages/blogs/BlogsLayout';
 import pb from '@/lib/pocketbase';
 import { Blog } from '@/types/blogs.type';
-import { GetServerSidePropsContext } from 'next';
 import { NextSeo } from 'next-seo';
 
 type BlogsProps = {
@@ -12,12 +11,12 @@ export default function Blogs({ blogs }: BlogsProps) {
   return (
     <>
       <NextSeo title='Blogs' />
-      {/* <BlogsLayout blogs={blogs} /> */}
+      <BlogsLayout blogs={blogs} />
     </>
   );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+export async function getStaticProps() {
   const blogs = await pb.collection<Blog>('blogs').getFullList({
     sort: '-created',
   });
@@ -26,5 +25,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     props: {
       blogs,
     },
+    revalidate: 60,
   };
 }

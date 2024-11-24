@@ -1,5 +1,5 @@
 import { Blog } from '@/types/blogs.type';
-import { Box, Container, Divider, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, Separator, Text } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
@@ -16,7 +16,7 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
       month: 'long',
       day: 'numeric',
     };
-    const formattedDate = new Date(date).toLocaleDateString(undefined, options);
+    const formattedDate = new Date(date).toLocaleDateString("en-US", options);
     return formattedDate;
   };
 
@@ -29,7 +29,7 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
         <Flex
           direction={'column'}
           gap={2}>
-          <Heading size={'xl'}>{blog.title}</Heading>
+          <Heading size={['xl', '2xl', '3xl']}>{blog.title}</Heading>
           <Text>{getPublishedDate(blog.published)}</Text>
           <Box
             overflow={'hidden'}
@@ -58,10 +58,10 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
           <ReactMarkdown
             components={{
               hr: ({ node, ...props }) => (
-                <Divider
+                <Separator
                   my={5}
                   orientation='horizontal'
-                  sx={{
+                  css={{
                     border: '2px solid',
                   }}
                 />
@@ -75,8 +75,8 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
                 />
               ),
               ul: ({ node, children, ...props }) => (
-                <Box pl={6}>
-                  <ul>{children}</ul>
+                <Box as="ul" pl={6} listStyleType="disc">
+                  {children}
                 </Box>
               ),
             }}
