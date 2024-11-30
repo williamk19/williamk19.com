@@ -1,7 +1,11 @@
 import { Box, Container, Flex, Text, Button } from '@chakra-ui/react';
-import Lottie from 'lottie-react';
 import Animation404 from '@/assets/lottie/Animation404.json';
 import NextLink from 'next/link';
+import dynamic from 'next/dynamic';
+import { GetServerSidePropsContext } from 'next';
+import { getServerSideProps as chakraGetServerSideProps } from '@/lib/chakra/Chakra';
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 export default function Custom404() {
   return (
@@ -39,4 +43,14 @@ export default function Custom404() {
       </Container>
     </>
   );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const chakraProps = await chakraGetServerSideProps(context);
+
+  return {
+    props: {
+      ...chakraProps.props
+    },
+  };
 }
