@@ -37,7 +37,7 @@ export default function FooterLink() {
         <Link
           target='_blank'
           as={NextLink}
-          href='mailto:mail@williamk19.my.id?subject=Hello%20William%2C%20%F0%9F%91%8B!'>
+          href='mailto:mail@williamk19.com?subject=Hello%20William%2C%20%F0%9F%91%8B!'>
           Email
         </Link>
       </Flex>
