@@ -27,7 +27,7 @@ const ProjectsLayout = ({ projects }: ProjectsLayoutProps) => {
           alignItems='center'>
           <Heading
             mb={'2'}
-            size={'lg'}>
+            size={['xl', '2xl', '3xl']}>
             Projects
           </Heading>
           <Text mb={'6'}>{`Projects i've made so far`}</Text>

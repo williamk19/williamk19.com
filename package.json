@@ -16,6 +16,7 @@
     "@fontsource/figtree": "^5.1.1",
     "dayjs": "^1.11.13",
     "embla-carousel-react": "^8.3.0",
+    "esbuild": "^0.24.0",
     "eslint": "9.13.0",
     "eslint-config-next": "15.0.1",
     "he": "^1.2.0",

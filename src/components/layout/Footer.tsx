@@ -8,12 +8,12 @@ export default function Footer() {
     <>
       <Box
         h='2'
-        background={`${'linear-gradient(to right, #ef008f 0%, #6ec3f4 25%, #7038ff 50%, #c9c9c9 75%, #ef008f 100%) 200% 0/200% 100%;'}`}
-        animation={`line-anim 10s linear infinite`}
+        borderRadius={'full'}
         css={{
-          '@keyframes line-anim': {
-            to: { backgroundPosition: '-200% 0%' },
-          },
+          background:
+            'linear-gradient(to right, #ef008f 0%, #6ec3f4 25%, #7038ff 50%, #c9c9c9 75%, #ef008f 100%)',
+          backgroundSize: '200% 100%',
+          animation: 'line-anim 5s linear infinite',
         }}
       />
       <Flex
