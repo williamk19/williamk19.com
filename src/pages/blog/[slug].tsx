@@ -14,21 +14,23 @@ type ParamsType = {
 };
 
 export default function Page({ blog }: BlogPageProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
   return (
     <>
       <NextSeo
         title={blog.title}
         description={blog.blog_text.split(' ').slice(0, 20).join(' ')}
-        canonical={`williamk19.my.id/blog/${blog.slug}`}
+        canonical={`${baseUrl}/blog/${blog.slug}`}
         openGraph={{
           title: blog.title,
           description: blog.blog_text.split(' ').slice(0, 20).join(' '),
           type: 'article',
-          url: `williamk19.my.id/blog/${blog.slug}`,
+          url: `${baseUrl}/blog/${blog.slug}`,
           article: {
             publishedTime: blog.published.toString(),
             modifiedTime: blog.updated.toString(),
-            authors: ['https://williamk19.my.id'],
+            authors: ['williamk19', 'william kurniawan'],
             tags: [...blog.tags],
           },
           images: [

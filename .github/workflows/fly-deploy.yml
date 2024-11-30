@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: deploy-group    # optional: ensure only one action runs at a time
     env:
-      NEXT_PUBLIC_PB_URL: "https://pb.williamk19.my.id"
+      NEXT_PUBLIC_PB_URL: "https://pb.williamk19.com"
 
     steps:
       - uses: actions/checkout@v4
