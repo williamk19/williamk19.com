@@ -45,19 +45,19 @@ export default function MessageForm() {
           }}
         />
       </Box>
-      <Link
-        height={'max-content'}
-        width={'max-content'}
-        href={mailtoLink}
-        target='_blank'>
-        <Button
-          shadow='lg'
-          mt='4'
-          size={'sm'}
-          colorScheme='blue'>
+      <Button
+        asChild
+        shadow='lg'
+        mt='4'
+        size={'sm'}
+        width={'32'}
+        colorScheme='blue'>
+        <Link
+          href={mailtoLink}
+          target='_blank'>
           Send Message
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </>
   );
 }

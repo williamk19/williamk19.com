@@ -1,8 +1,8 @@
 # syntax = docker/dockerfile:1
 
-# Adjust DENO_VERSION as desired
-ARG DENO_VERSION=alpine-2.1.1
-FROM denoland/deno:${DENO_VERSION} AS base
+# Adjust BUN_VERSION as desired
+ARG BUN_VERSION=1.1.38-alpine
+FROM oven/bun:${BUN_VERSION} AS base
 
 LABEL fly_launch_runtime="Deno"
 
@@ -10,14 +10,24 @@ LABEL fly_launch_runtime="Deno"
 WORKDIR /app
 
 # Set production environment
-ENV DENO_ENV="production"
+ENV NODE_ENV="production"
 
-# Copy application code and dependencies
+# Throw-away build stage to reduce size of final image
+FROM base AS build
+
+# Install node modules
+COPY bun.lockb package.json ./
+RUN bun install
+
+# Copy application code
 COPY . .
 
 # Set application environment variables
 ARG NEXT_PUBLIC_PB_URL
 ENV NEXT_PUBLIC_PB_URL=${NEXT_PUBLIC_PB_URL}
+
+# Build application
+RUN bun run build
 
 # Final stage for app image
 FROM base AS build
@@ -27,4 +37,4 @@ RUN deno task build
 
 # Expose port and run the Deno application
 EXPOSE 3000
-CMD ["deno", "task", "start"]
+CMD [ "bun", "run", "start" ]

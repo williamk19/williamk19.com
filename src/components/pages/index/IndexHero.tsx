@@ -93,6 +93,7 @@ export default function IndexHero() {
                   content={'Hello 👋!'}
                   aria-label='A tooltip'>
                   <IconButton
+                    aria-label='chat tooltip'
                     onMouseEnter={() => setIsTooltipOpen(true)}
                     onMouseLeave={() => setIsTooltipOpen(false)}
                     borderRadius={'full'}

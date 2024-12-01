@@ -75,6 +75,7 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
           <Flex gap={3}>
             {project.github_link && (
               <Link
+                aria-label={`link icon to ${project.github_link}`}
                 display={'flex'}
                 alignItems={'center'}
                 justifyContent={'center'}
@@ -85,6 +86,7 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
             )}
             {project.url_link && (
               <Link
+                aria-label={`link icon to ${project.url_link}`}
                 height={'24px'}
                 display={'flex'}
                 alignItems={'center'}
