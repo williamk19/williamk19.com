@@ -4,9 +4,9 @@
 ARG BUN_VERSION=1.1.38-alpine
 FROM oven/bun:${BUN_VERSION} AS base
 
-LABEL fly_launch_runtime="Deno"
+LABEL fly_launch_runtime="Next.js"
 
-# Set up the working directory
+# Next.js app lives here
 WORKDIR /app
 
 # Set production environment
@@ -30,11 +30,11 @@ ENV NEXT_PUBLIC_PB_URL=${NEXT_PUBLIC_PB_URL}
 RUN bun run build
 
 # Final stage for app image
-FROM base AS build
+FROM base
 
-RUN deno install
-RUN deno task build
+# Copy built application
+COPY --from=build /app /app
 
-# Expose port and run the Deno application
+# Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD [ "bun", "run", "start" ]
