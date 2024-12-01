@@ -13,7 +13,13 @@ const IndexProjects = ({ projects }: IndexProjectsProps) => {
         maxW='container.md'
         px={0}
         py={['10', '10', '16']}>
-        <Heading mb={'6'}>Recent Projects</Heading>
+        <Heading
+          size={['2xl', '2xl', '3xl']}
+          fontWeight='black'
+          letterSpacing='wide'
+          mb={'6'}>
+          Recent Projects
+        </Heading>
         <Grid
           templateColumns={[
             'repeat(1, 1fr)',

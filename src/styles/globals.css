@@ -1,3 +1,13 @@
 * {
   font-family: 'Figtree', sans-serif;
 }
+
+*:focus {
+  outline: none;
+}
+
+@keyframes line-anim {
+  to {
+    background-position: -200% 0%;
+  }
+}

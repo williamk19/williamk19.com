@@ -1,8 +1,9 @@
 import { Project } from '@/types/project.type';
-import { Box, Flex, Link, Text, useColorMode } from '@chakra-ui/react';
+import { Box, Flex, Link, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import { RiGithubFill } from 'react-icons/ri';
 import { ImLink } from 'react-icons/im';
+import { useColorMode } from '@/components/ui/color-mode';
 
 type ProjectsCardProps = {
   project: Project;
@@ -21,10 +22,8 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
         boxShadow='md'
         overflow={'hidden'}
         transition={'transform 0.4s ease-out'}
-        sx={{
-          ':hover': {
-            transform: 'scale(1.045)',
-          },
+        _hover={{
+          transform: 'scale(1.045)',
         }}>
         {usingImage && (
           <Box
@@ -76,6 +75,7 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
           <Flex gap={3}>
             {project.github_link && (
               <Link
+                aria-label={`link icon to ${project.github_link}`}
                 display={'flex'}
                 alignItems={'center'}
                 justifyContent={'center'}
@@ -86,6 +86,7 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
             )}
             {project.url_link && (
               <Link
+                aria-label={`link icon to ${project.url_link}`}
                 height={'24px'}
                 display={'flex'}
                 alignItems={'center'}

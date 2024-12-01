@@ -1,9 +1,8 @@
 import BlogLayout from '@/components/pages/blogs/BlogLayout';
 import pb from '@/lib/pocketbase';
 import { Blog } from '@/types/blogs.type';
-import { GetServerSidePropsContext, GetStaticPaths } from 'next';
+import { GetStaticPropsContext } from 'next';
 import { NextSeo } from 'next-seo';
-import { getServerSideProps as chakraGetServerSideProps } from '@/lib/chakra/Chakra';
 
 type BlogPageProps = {
   blog: Blog;
@@ -48,11 +47,8 @@ export default function Page({ blog }: BlogPageProps) {
   );
 }
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext,
-) => {
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { slug } = context.params as ParamsType;
-  const chakraProps = await chakraGetServerSideProps(context);
 
   const blog = await pb
     .collection<Blog>('blogs')
@@ -60,8 +56,21 @@ export const getServerSideProps = async (
 
   return {
     props: {
-      ...chakraProps.props,
       blog,
     },
+    revalidate: 600
+  };
+};
+
+export const getStaticPaths = async () => {
+  const blogs = await pb.collection<Blog>('blogs').getFullList();
+
+  const paths = blogs.map((blog) => ({
+    params: { slug: blog.slug },
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking',
   };
 };

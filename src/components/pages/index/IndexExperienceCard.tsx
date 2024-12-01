@@ -1,5 +1,6 @@
+import { useColorMode } from '@/components/ui/color-mode';
 import { Experience } from '@/types/experience.type';
-import { Box, Flex, Show, Text, useColorMode } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { Key } from 'react';
 
 type IndexExperienceCardProps = {
@@ -15,13 +16,13 @@ const IndexExperienceCard = ({ id, experience }: IndexExperienceCardProps) => {
     ? new Date(experience.ended_date)
     : 'Present';
 
-  const monthYearStart = `${dateStart.toLocaleString('default', {
+  const monthYearStart = `${dateStart.toLocaleString('en-US', {
     month: 'short',
   })}, ${dateStart.getFullYear()}`;
   const monthYearEnd =
     dateEnd === 'Present'
       ? `Present`
-      : `${dateEnd.toLocaleString('default', {
+      : `${dateEnd.toLocaleString('en-US', {
           month: 'short',
         })}, ${dateEnd.getFullYear()}`;
 
@@ -35,8 +36,8 @@ const IndexExperienceCard = ({ id, experience }: IndexExperienceCardProps) => {
         w='100%'
         p={4}
         transition={'transform 0.4s ease-out'}
-        sx={{
-          ':hover': {
+        css={{
+          '&:hover': {
             transform: 'scale(1.025)',
           },
         }}>
@@ -61,7 +62,7 @@ const IndexExperienceCard = ({ id, experience }: IndexExperienceCardProps) => {
             textAlign={['left', 'right']}
             fontSize={['xs', 'xs', 'sm']}>
             <Text>{`${monthYearStart} - ${monthYearEnd}`}</Text>
-            {experience.location && <Show below='sm'>|</Show>}
+            {experience.location && <Box hideFrom={'sm'}>|</Box>}
             <Text>{experience?.location}</Text>
           </Flex>
         </Flex>

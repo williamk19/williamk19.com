@@ -39,7 +39,11 @@ const IndexExperience = ({ experiences }: IndexExperienceProps) => {
         maxW='container.md'
         px={0}
         py={['10', '10', '16']}>
-        <Heading mb={'4'}>Experience</Heading>
+        <Heading
+          size={['2xl', '2xl', '3xl']}
+          mb={'4'}>
+          Experience
+        </Heading>
         <Text
           fontSize='xl'
           fontWeight='semibold'

@@ -13,7 +13,11 @@ export default function MessageLayout() {
           mb='2'
           direction='column'
           alignItems='center'>
-          <Heading mb='2' size={'lg'}>Message Me</Heading>
+          <Heading
+            mb='2'
+            size={['2xl', '2xl', '3xl']}>
+            Message Me
+          </Heading>
           <Text>Drop some message to williamk19&apos;s email</Text>
         </Flex>
         <MessageForm />

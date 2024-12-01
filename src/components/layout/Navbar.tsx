@@ -1,10 +1,11 @@
-import { Link, Flex, Box, useColorMode } from '@chakra-ui/react';
+import { Link, Flex, Box } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import NavMenu from '../core/navbar/NavMenu';
 import NavThemeToggle from '../core/navbar/NavThemeToggle';
 import NavLink from '../core/navbar/NavLink';
 import { useRouter } from 'next/router';
 import { linkHoverStyles } from '@/styles/styles';
+import { useColorMode } from '../ui/color-mode';
 
 export default function Navbar() {
   const { colorMode } = useColorMode();
@@ -27,7 +28,7 @@ export default function Navbar() {
           px={['4', '4', '10']}
           borderRadius={[0, 0, '8px']}
           transition='all 0.2s ease-out'
-          sx={
+          css={
             colorMode === 'dark'
               ? {
                   background: 'rgba(46, 61, 71, 0.808)',
@@ -52,7 +53,13 @@ export default function Navbar() {
               href='/'
               fontWeight='bold'
               lineHeight={`1.5`}
-              sx={linkHoverStyles(pathname, `/`, colorMode)}>
+              _hover={{
+                '&:after': {
+                  width: '100%',
+                  textDecoration: 'none',
+                },
+              }}
+              css={linkHoverStyles(pathname, `/`, colorMode!)}>
               williamk19
             </Link>
             <NavLink />

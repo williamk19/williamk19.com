@@ -8,24 +8,19 @@ export const linkHoverStyles = (
       position: 'relative',
     },
 
-    ':after': {
+    '&:after': {
       position: 'absolute',
       bottom: '0',
       left: '0%',
       height: '2px',
       width: pathname === linkname ? '100%' : '0%',
-      backgroundColor: colorMode === 'light' ? '#000' : '#fff',
+      backgroundColor: '#000',
       display: 'block',
       content: '""',
       transition: 'width 0.3s, background-color 1s ease-out',
     },
 
     '&:hover': {
-      textDecoration: 'none',
-    },
-
-    '&:hover:after': {
-      width: '100%',
       textDecoration: 'none',
     },
   };
@@ -37,7 +32,10 @@ export const linkMenuStyles = (
   colorMode: string,
 ) => {
   const bgColor = colorMode === 'light' ? 'blackAlpha.200' : 'whiteAlpha.200';
+
   return {
+    width: 200,
+
     '&': {
       background: pathname === linkname ? bgColor : 'none',
       transition: 'all .4s ease-in-out',
@@ -45,6 +43,11 @@ export const linkMenuStyles = (
     },
 
     '&:hover': {
+      textDecoration: 'none',
+      background: colorMode === `dark` ? `whiteAlpha.200` : `blackAlpha.200`,
+    },
+
+    '&:active': {
       textDecoration: 'none',
       background: colorMode === `dark` ? `whiteAlpha.200` : `blackAlpha.200`,
     },

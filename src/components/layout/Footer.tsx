@@ -1,29 +1,19 @@
-import {
-  Box,
-  Flex,
-  Text,
-  Link,
-  useColorMode,
-  useBreakpoint,
-} from '@chakra-ui/react';
-import NextLink from 'next/link';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import FooterLink from './FooterLink';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { colorMode } = useColorMode();
-  const breakpoint = useBreakpoint({ ssr: true });
 
   return (
     <>
       <Box
         h='2'
-        background={`${'linear-gradient(to right, #ef008f 0%, #6ec3f4 25%, #7038ff 50%, #c9c9c9 75%, #ef008f 100%) 200% 0/200% 100%;'}`}
-        animation={`line-anim 10s linear infinite`}
-        sx={{
-          '@keyframes line-anim': {
-            to: { backgroundPosition: '-200% 0%' },
-          },
+        borderRadius={'full'}
+        css={{
+          background:
+            'linear-gradient(to right, #ef008f 0%, #6ec3f4 25%, #7038ff 50%, #c9c9c9 75%, #ef008f 100%)',
+          backgroundSize: '200% 100%',
+          animation: 'line-anim 5s linear infinite',
         }}
       />
       <Flex
@@ -35,7 +25,7 @@ export default function Footer() {
           direction={['column-reverse', 'row']}
           justifyContent='space-between'
           rowGap='10'
-          w='full'>
+          width={'full'}>
           <Box
             textAlign={['center', 'left']}
             w={['full', '3xs', 'lg']}
@@ -44,15 +34,12 @@ export default function Footer() {
             <Text>Made with Next.js & Chakra UI.</Text>
             <Text>MIT License © {currentYear}</Text>
           </Box>
-          {breakpoint === 'base' && (
-            <Flex
-              w='full'
-              textAlign={'left'}
-              gap='20'>
-              <FooterLink />
-            </Flex>
-          )}
-          {breakpoint !== 'base' && <FooterLink />}
+          <Flex
+            w={['full', 'fit-content']}
+            textAlign={'left'}
+            gap='20'>
+            <FooterLink />
+          </Flex>
         </Flex>
       </Flex>
     </>

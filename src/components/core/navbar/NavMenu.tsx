@@ -1,69 +1,73 @@
-import {
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Show,
-  Link,
-  useColorMode,
-} from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
-import { TfiBriefcase } from 'react-icons/tfi';
+import { IconButton, Link, Box } from '@chakra-ui/react';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdOutlineMarkUnreadChatAlt } from 'react-icons/md';
+import { VscBriefcase } from 'react-icons/vsc';
 import { SlDocs } from 'react-icons/sl';
-import { BiMessageDetail } from 'react-icons/bi';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { linkMenuStyles } from '@/styles/styles';
+import { useColorMode } from '@/components/ui/color-mode';
+import {
+  MenuContent,
+  MenuItem,
+  MenuRoot,
+  MenuTrigger,
+} from '@/components/ui/menu';
 
 export default function NavMenu() {
   const { pathname } = useRouter();
   const { colorMode } = useColorMode();
 
   return (
-    <>
-      <Show below='md'>
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            aria-label='Options'
-            icon={<HamburgerIcon />}
-            variant='outline'
-          />
-          <MenuList>
+    <Box hideFrom={'md'}>
+      <MenuRoot>
+        <IconButton
+          padding={'unset'}
+          width={'fit-content'}
+          as={MenuTrigger}
+          aria-label='page-options'
+          variant={'outline'}>
+          <GiHamburgerMenu />
+        </IconButton>
+        <MenuContent>
+          <MenuItem
+            asChild
+            css={linkMenuStyles(pathname, '/blog', colorMode!)}
+            value='blogs'>
             <Link
               _hover={{ textDecoration: 'none' }}
               as={NextLink}
               href='/blog'>
-              <MenuItem
-                sx={linkMenuStyles(pathname, '/blog', colorMode)}
-                icon={<SlDocs />}>
-                Blogs
-              </MenuItem>
+              <SlDocs />
+              Blogs
             </Link>
+          </MenuItem>
+          <MenuItem
+            asChild
+            css={linkMenuStyles(pathname, '/blog', colorMode!)}
+            value='projects'>
             <Link
               _hover={{ textDecoration: 'none' }}
               as={NextLink}
               href='/projects'>
-              <MenuItem
-                sx={linkMenuStyles(pathname, '/projects', colorMode)}
-                icon={<TfiBriefcase />}>
-                Projects
-              </MenuItem>
+              <VscBriefcase />
+              Projects
             </Link>
+          </MenuItem>
+          <MenuItem
+            asChild
+            css={linkMenuStyles(pathname, '/blog', colorMode!)}
+            value='message'>
             <Link
               _hover={{ textDecoration: 'none' }}
               as={NextLink}
               href='/message'>
-              <MenuItem
-                sx={linkMenuStyles(pathname, '/message', colorMode)}
-                icon={<BiMessageDetail />}>
-                Message
-              </MenuItem>
+              <MdOutlineMarkUnreadChatAlt />
+              Message
             </Link>
-          </MenuList>
-        </Menu>
-      </Show>
-    </>
+          </MenuItem>
+        </MenuContent>
+      </MenuRoot>
+    </Box>
   );
 }

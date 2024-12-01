@@ -6,8 +6,6 @@ import { Project } from '@/types/project.type';
 import IndexProjects from '@/components/pages/index/IndexProjects';
 import IndexMessage from '@/components/pages/index/IndexMessage';
 import pb from '@/lib/pocketbase';
-import { GetServerSidePropsContext } from 'next';
-import { getServerSideProps as chakraGetServerSideProps } from '@/lib/chakra/Chakra';
 import { Resume } from '@/types/resume.type';
 
 type HomeProps = {
@@ -16,11 +14,11 @@ type HomeProps = {
   resume: Resume;
 };
 
-const Home = ({ experiences, projects, resume }: HomeProps) => {
+const Home = ({ experiences, projects }: HomeProps) => {
   return (
     <>
       <NextSeo title='Home' />
-      <IndexHero resume={resume} />
+      <IndexHero />
       <IndexProjects projects={projects} />
       <IndexExperience experiences={experiences} />
       <IndexMessage />
@@ -28,9 +26,7 @@ const Home = ({ experiences, projects, resume }: HomeProps) => {
   );
 };
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const chakraProps = await chakraGetServerSideProps(context);
-
+export async function getStaticProps() {
   const experiences = await pb
     .collection<Experience>('experiences')
     .getFullList({
@@ -43,17 +39,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       sort: '-created',
     });
 
-  const resume = await pb.collection('resumes').getFirstListItem('', {
-    sort: '-created',
-  });
-
   return {
     props: {
-      ...chakraProps.props,
       experiences,
       projects,
-      resume,
     },
+    revalidate: 60,
   };
 }
 
