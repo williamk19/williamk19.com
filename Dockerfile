@@ -4,8 +4,6 @@
 ARG BUN_VERSION=1.1.38-alpine
 FROM oven/bun:${BUN_VERSION} AS base
 
-LABEL fly_launch_runtime="Next.js"
-
 # Next.js app lives here
 WORKDIR /app
 
@@ -15,12 +13,12 @@ ENV NODE_ENV="production"
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
+# Copy application code
+COPY . .
+
 # Install node modules
 COPY bun.lockb package.json ./
 RUN bun install
-
-# Copy application code
-COPY . .
 
 # Set application environment variables
 ARG NEXT_PUBLIC_PB_URL
