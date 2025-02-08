@@ -58,7 +58,7 @@ export default function BlogsCard({ blog }: BlogCardProps) {
           <Box
             height={{ base: '28vw', sm: 'unset' }}
             width={{ sm: '100%' }}
-            maxWidth={{ base: '300px', sm: '200px' }}
+            maxWidth={{ base: '100%', sm: '200px' }}
             position={'relative'}>
             <Image
               style={{
@@ -66,7 +66,6 @@ export default function BlogsCard({ blog }: BlogCardProps) {
                 overflow: 'hidden',
               }}
               fill
-              sizes='(max-width: 768px) 100vw, (min-width: 769px) 50vw'
               src={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
               alt={`${blog.slug}-heading-image`}
             />
