@@ -13,6 +13,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    webpackMemoryOptimizations: true,
+  },
   webpack: (config) => {
     config.experiments = {
       ...config.experiments,
@@ -22,4 +25,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig
+export default nextConfig;
