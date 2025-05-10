@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Adjust BUN_VERSION as desired
-ARG BUN_VERSION=1.1.38
+ARG BUN_VERSION=1.2.12
 FROM oven/bun:${BUN_VERSION} AS base
 
 # Next.js app lives here
@@ -19,10 +19,6 @@ COPY . .
 # Install node modules
 COPY bun.lockb package.json ./
 RUN bun install
-
-# Set application environment variables
-ARG NEXT_PUBLIC_PB_URL
-ENV NEXT_PUBLIC_PB_URL=${NEXT_PUBLIC_PB_URL}
 
 # Build application
 RUN bun run build
