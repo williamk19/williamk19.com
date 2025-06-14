@@ -72,15 +72,14 @@ export default function IndexHero() {
           <Box
             pr={'5'}
             minWidth={'36'}
+			minHeight={'36'}
             maxWidth={'3/12'}
-			maxHeight={'fit-content'}>
+			maxHeight={'3/12'}>
             <Box
               position={'relative'}
               borderRadius={'full'}
               boxShadow={'2xl'}>
               <Image
-                width={'fit-content'}
-                height={'fit-content'}
                 src='/images/profile-pic.png'
                 alt='William Kurniawan emoji'
                 borderRadius='full'
