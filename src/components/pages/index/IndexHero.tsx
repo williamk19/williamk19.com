@@ -72,7 +72,8 @@ export default function IndexHero() {
           <Box
             pr={'5'}
             minWidth={'36'}
-            maxWidth={'3/12'}>
+            maxWidth={'3/12'}
+			maxHeight={'fit-content'}>
             <Box
               position={'relative'}
               borderRadius={'full'}
