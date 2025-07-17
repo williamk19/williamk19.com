@@ -28,21 +28,12 @@ export default function Navbar() {
           px={['4', '4', '10']}
           borderRadius={[0, 0, '8px']}
           transition='all 0.2s ease-out'
-          css={
-            colorMode === 'dark'
-              ? {
-                  background: 'rgba(46, 61, 71, 0.808)',
-                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-                  backdropFilter: 'blur(8.4px)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                }
-              : {
-                  background: 'rgba(218, 218, 218, 0.808)',
-                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-                  backdropFilter: 'blur(8.4px)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                }
-          }>
+          bg='navBg'
+          css={{
+            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+            backdropFilter: 'blur(8.4px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+          }}>
           <Flex
             h='20'
             align='center'
