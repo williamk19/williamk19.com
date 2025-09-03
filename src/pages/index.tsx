@@ -27,25 +27,36 @@ const Home = ({ experiences, projects }: HomeProps) => {
 };
 
 export async function getStaticProps() {
-  const experiences = await pb
-    .collection<Experience>('experiences')
-    .getFullList({
-      sort: '-created',
-    });
+  try {
+    const experiences = await pb
+      .collection<Experience>('experiences')
+      .getFullList({
+        sort: '-created',
+      });
 
-  const { items: projects } = await pb
-    .collection<Project>('projects')
-    .getList(1, 2, {
-      sort: '-created',
-    });
+    const { items: projects } = await pb
+      .collection<Project>('projects')
+      .getList(1, 2, {
+        sort: '-created',
+      });
 
-  return {
-    props: {
-      experiences,
-      projects,
-    },
-    revalidate: 60,
-  };
+    return {
+      props: {
+        experiences,
+        projects,
+      },
+      revalidate: 60,
+    };
+  } catch (error) {
+    console.error('Failed to fetch data:', error);
+    return {
+      props: {
+        experiences: [],
+        projects: [],
+      },
+      revalidate: 60,
+    };
+  }
 }
 
 export default Home;
