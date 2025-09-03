@@ -8,6 +8,7 @@ import Layout from '../components/layout/Layout';
 import { ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
 import theme from '@/themes/theme';
+import { ColorModeProvider } from '@/components/ui/color-mode';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -103,17 +104,19 @@ export default function App({ Component, pageProps }: AppProps) {
           content='#ffffff'
         />
       </Head>
-      <ChakraProvider value={theme}>
-        <DefaultSeo {...defaultSEOConfig} />
-        <Layout>
-          <NextNProgress
-            height={4}
-            color='#086F83'
-            options={{ showSpinner: false }}
-          />
-          <Component {...pageProps} />
-        </Layout>
-      </ChakraProvider>
+      <ColorModeProvider>
+        <ChakraProvider value={theme}>
+          <DefaultSeo {...defaultSEOConfig} />
+          <Layout>
+            <NextNProgress
+              height={4}
+              color='#086F83'
+              options={{ showSpinner: false }}
+            />
+            <Component {...pageProps} />
+          </Layout>
+        </ChakraProvider>
+      </ColorModeProvider>
     </>
   );
 }

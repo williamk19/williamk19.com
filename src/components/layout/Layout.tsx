@@ -10,7 +10,7 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
     <>
-      <Box transition='0.5s ease-out'>
+      <Box bg="bg" color="text" minH="100vh" transition='0.5s ease-out'>
         <Navbar />
         <Container
           maxWidth={'breakpoint-md'}
