@@ -26,10 +26,10 @@ const theme = createSystem(defaultConfig, {
     semanticTokens: {
       colors: {
         bg: {
-          value: { base: 'white', _dark: 'gray.900' },
+          value: { base: 'white', _dark: '#212830' },
         },
         text: {
-          value: { base: 'gray.900', _dark: 'gray.100' },
+          value: { base: 'gray.900', _dark: 'white' },
         },
         muted: {
           value: { base: 'gray.600', _dark: 'gray.400' },
@@ -38,12 +38,12 @@ const theme = createSystem(defaultConfig, {
           value: { base: 'gray.200', _dark: 'gray.700' },
         },
         cardBg: {
-          value: { base: 'white', _dark: 'gray.800' },
+          value: { base: 'white', _dark: '#2a3441' },
         },
         navBg: {
           value: { 
             base: 'rgba(218, 218, 218, 0.808)', 
-            _dark: 'rgba(46, 61, 71, 0.808)' 
+            _dark: 'rgba(42, 52, 65, 0.808)' 
           },
         },
       },
