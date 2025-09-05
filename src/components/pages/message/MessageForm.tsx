@@ -1,9 +1,11 @@
+import { useColorMode } from '@/components/ui/color-mode';
 import { Text, Button, Textarea, Box, Link } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
 export default function MessageForm() {
   const [message, setMessage] = useState('');
   const [mailtoLink, setMailtoLink] = useState('mailto:mail@williamk19.com');
+	const { colorMode } = useColorMode();
 
   useEffect(() => {
     if (message.length > 0) {
@@ -36,12 +38,12 @@ export default function MessageForm() {
           fontWeight={'500'}
           variant={'outline'}
           border={'2px solid'}
-          borderColor={'gray.500'}
+          borderColor={'border'}
           _hover={{
-            borderColor: 'gray.900',
+            borderColor: 'borderActive',
           }}
           _active={{
-            borderColor: 'gray.900',
+            borderColor: 'borderActive',
           }}
         />
       </Box>
