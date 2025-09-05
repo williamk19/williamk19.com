@@ -29,7 +29,7 @@ export default function NavMenu() {
           variant={'outline'}>
           <GiHamburgerMenu />
         </IconButton>
-        <MenuContent>
+        <MenuContent bg={colorMode === 'light' ? 'white' : 'gray.800'}>
           <MenuItem
             asChild
             css={linkMenuStyles(pathname, '/blog', colorMode!)}

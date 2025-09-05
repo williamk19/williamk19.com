@@ -13,7 +13,9 @@ export default function NavThemeToggle() {
     <IconButton
       onClick={handleToggleColorMode}
       aria-label='Toggle Color Mode'
-      size='md'>
+      size='md'
+			bg='buttonBg'
+		>
       {colorMode === 'light' ? <IoMoon /> : <IoSunny />}
     </IconButton>
   );

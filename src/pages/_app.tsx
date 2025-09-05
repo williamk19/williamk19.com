@@ -7,7 +7,7 @@ import defaultSEOConfig from '../../next-seo.config';
 import Layout from '../components/layout/Layout';
 import { ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
-import theme from '@/themes/theme';
+import { system } from '@/themes/theme';
 import { ColorModeProvider } from '@/components/ui/color-mode';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -105,7 +105,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <ColorModeProvider>
-        <ChakraProvider value={theme}>
+        <ChakraProvider value={system}>
           <DefaultSeo {...defaultSEOConfig} />
           <Layout>
             <NextNProgress

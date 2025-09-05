@@ -1,7 +1,7 @@
-import { createSystem, defaultConfig } from '@chakra-ui/react';
+import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
 import '@fontsource/figtree';
 
-const theme = createSystem(defaultConfig, {
+const customConfig = defineConfig({
   theme: {
     tokens: {
       fonts: {
@@ -26,29 +26,32 @@ const theme = createSystem(defaultConfig, {
     semanticTokens: {
       colors: {
         bg: {
-          value: { base: 'white', _dark: '#212830' },
+          value: { _light: 'white', _dark: '#212830' },
         },
         text: {
-          value: { base: 'gray.900', _dark: 'white' },
+          value: { _light: 'gray.900', _dark: 'white' },
         },
         muted: {
-          value: { base: 'gray.600', _dark: 'gray.400' },
+          value: { _light: 'gray.600', _dark: 'gray.400' },
         },
         border: {
-          value: { base: 'gray.200', _dark: 'gray.700' },
+          value: { _light: 'gray.200', _dark: 'gray.700' },
         },
         cardBg: {
-          value: { base: 'white', _dark: '#2a3441' },
+          value: { _light: 'white', _dark: '#2a3441' },
         },
         navBg: {
           value: { 
-            base: 'rgba(218, 218, 218, 0.808)', 
+            _light: 'rgba(218, 218, 218, 0.808)', 
             _dark: 'rgba(42, 52, 65, 0.808)' 
           },
         },
+				buttonBg: {
+					value: { _light: 'black', _dark: 'white' },
+				},
       },
     },
   },
 });
 
-export default theme;
+export const system = createSystem(defaultConfig, customConfig);
