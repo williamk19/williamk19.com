@@ -10,7 +10,6 @@ import {
 	Image,
 	Text,
 } from '@chakra-ui/react';
-import Link from 'next/link';
 import { useState } from 'react';
 import { Tooltip } from '@/components/ui/tooltip';
 import { RiChat1Line } from 'react-icons/ri';
@@ -51,22 +50,19 @@ export default function IndexHero() {
 							technologies in the future and collaborating on open source
 							projects.
 						</Text>
-						<Link
-							target='_blank'
-							href={`/api/documents/resume`}>
-							<Button
-								width={'32'}
-								mt={'5'}
-								colorPalette={'blue'}
-								fontWeight={'semibold'}
-								fontSize={'md'}
-								gap={'1.5'}>
-								<Icon>
-									<FaRegFilePdf />
-								</Icon>
+						<Button
+							asChild
+							width={'32'}
+							mt={'5'}
+							colorPalette={'blue'}
+							fontWeight={'semibold'}
+							fontSize={'md'}
+							gap={'1.5'}>
+							<a target='_blank' href={`/api/documents/resume`} rel='noopener noreferrer'>
+								<FaRegFilePdf />
 								Resume
-							</Button>
-						</Link>
+							</a>
+						</Button>
 					</Flex>
 					<Box
 						pr={'5'}
@@ -111,7 +107,7 @@ export default function IndexHero() {
 						</Box>
 					</Box>
 				</Flex>
-			</Container>
+			</Container >
 		</>
 	);
 }

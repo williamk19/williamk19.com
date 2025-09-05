@@ -47,7 +47,7 @@ const customConfig = defineConfig({
           },
         },
 				buttonBg: {
-					value: { _light: 'black', _dark: 'white' },
+					value: { _light: '{colors.gray.700}', _dark: '{colors.gray.300}' },
 				},
       },
     },
