@@ -1,5 +1,4 @@
 import { useColorMode } from '@/components/ui/color-mode';
-import { linkHoverStyles } from '@/styles/styles';
 import { Flex, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -18,13 +17,24 @@ export default function NavLink() {
           fontSize='md'
           fontWeight='semibold'
           href='/blog'
+					position={'relative'}
+					_after={{
+						position: 'absolute',
+						bottom: '0',
+						left: '0%',
+						height: '2px',
+						width: pathname === '/blog' ? '100%' : '0%',
+						backgroundColor: colorMode === 'light' ? '#000' : '#fff',
+						display: 'block',
+						content: '""',
+						transition: 'width 0.3s, background-color 0.5s ease-out',
+					}}
           _hover={{
             '&:after': {
               width: '100%',
               textDecoration: 'none',
             },
-          }}
-          css={linkHoverStyles(pathname, '/blog', colorMode!)}>
+          }}>
           Blogs
         </Link>
         <Link
@@ -32,13 +42,24 @@ export default function NavLink() {
           fontSize='md'
           fontWeight='semibold'
           href='/projects'
+					position={'relative'}
+					_after={{
+						position: 'absolute',
+						bottom: '0',
+						left: '0%',
+						height: '2px',
+						width: pathname === '/projects' ? '100%' : '0%',
+						backgroundColor: colorMode === 'light' ? '#000' : '#fff',
+						display: 'block',
+						content: '""',
+						transition: 'width 0.3s, background-color 0.5s ease-out',
+					}}
           _hover={{
             '&:after': {
               width: '100%',
               textDecoration: 'none',
             },
-          }}
-          css={linkHoverStyles(pathname, '/projects', colorMode!)}>
+          }}>
           Projects
         </Link>
         <Link
@@ -46,13 +67,24 @@ export default function NavLink() {
           fontSize='md'
           fontWeight='semibold'
           href='/message'
+					position={'relative'}
+					_after={{
+						position: 'absolute',
+						bottom: '0',
+						left: '0%',
+						height: '2px',
+						width: pathname === '/message' ? '100%' : '0%',
+						backgroundColor: colorMode === 'light' ? '#000' : '#fff',
+						display: 'block',
+						content: '""',
+						transition: 'width 0.3s, background-color 0.5s ease-out',
+					}}
           _hover={{
             '&:after': {
               width: '100%',
               textDecoration: 'none',
             },
-          }}
-          css={linkHoverStyles(pathname, '/message', colorMode!)}>
+          }}>
           Message
         </Link>
       </Flex>

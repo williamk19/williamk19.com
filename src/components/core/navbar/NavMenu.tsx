@@ -18,6 +18,8 @@ export default function NavMenu() {
   const { pathname } = useRouter();
   const { colorMode } = useColorMode();
 
+	const bgColor = colorMode === 'light' ? 'blackAlpha.200' : 'whiteAlpha.200';
+
   return (
     <Box hideFrom={'md'}>
       <MenuRoot>
@@ -32,7 +34,19 @@ export default function NavMenu() {
         <MenuContent bg={colorMode === 'light' ? 'white' : 'gray.800'}>
           <MenuItem
             asChild
-            css={linkMenuStyles(pathname, '/blog', colorMode!)}
+            css={{
+							background: pathname === '/blog' ? bgColor : 'none',
+							transition: 'all .4s ease-in-out',
+							textDecoration: 'none',
+						}}
+						_hover={{
+							textDecoration: 'none',
+							background: colorMode === `dark` ? `whiteAlpha.200` : `blackAlpha.200`,
+						}}
+						_active={{
+							textDecoration: 'none',
+							background: colorMode === `dark` ? `whiteAlpha.200` : `blackAlpha.200`,
+						}}
             value='blogs'>
             <Link
               _hover={{ textDecoration: 'none' }}
@@ -44,7 +58,19 @@ export default function NavMenu() {
           </MenuItem>
           <MenuItem
             asChild
-            css={linkMenuStyles(pathname, '/blog', colorMode!)}
+            css={{
+							background: pathname === '/projects' ? bgColor : 'none',
+							transition: 'all .4s ease-in-out',
+							textDecoration: 'none',
+						}}
+						_hover={{
+							textDecoration: 'none',
+							background: colorMode === `dark` ? `whiteAlpha.200` : `blackAlpha.200`,
+						}}
+						_active={{
+							textDecoration: 'none',
+							background: colorMode === `dark` ? `whiteAlpha.200` : `blackAlpha.200`,
+						}}
             value='projects'>
             <Link
               _hover={{ textDecoration: 'none' }}
@@ -56,7 +82,19 @@ export default function NavMenu() {
           </MenuItem>
           <MenuItem
             asChild
-            css={linkMenuStyles(pathname, '/blog', colorMode!)}
+            css={{
+							background: pathname === '/message' ? bgColor : 'none',
+							transition: 'all .4s ease-in-out',
+							textDecoration: 'none',
+						}}
+						_hover={{
+							textDecoration: 'none',
+							background: colorMode === `dark` ? `whiteAlpha.200` : `blackAlpha.200`,
+						}}
+						_active={{
+							textDecoration: 'none',
+							background: colorMode === `dark` ? `whiteAlpha.200` : `blackAlpha.200`,
+						}}
             value='message'>
             <Link
               _hover={{ textDecoration: 'none' }}

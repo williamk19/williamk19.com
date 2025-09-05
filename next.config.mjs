@@ -19,6 +19,7 @@ const nextConfig = {
     },
     experimental: {
         webpackMemoryOptimizations: true,
+				optimizePackageImports: [ "@chakra-ui/react" ]
     },
     webpack: (config) => {
         config.experiments = {
