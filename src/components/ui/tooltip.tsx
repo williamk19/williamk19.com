@@ -13,8 +13,6 @@ export interface TooltipProps extends ChakraTooltip.RootProps {
 
 export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
   function Tooltip(props, ref) {
-		const { colorMode } = useColorMode();
-
     const {
       showArrow,
       children,
@@ -25,8 +23,6 @@ export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
       portalRef,
       ...rest
     } = props
-
-		const { colorMode } = useColorMode();
 
     if (disabled) return children
 
