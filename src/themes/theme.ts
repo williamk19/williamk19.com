@@ -21,12 +21,13 @@ const customConfig = defineConfig({
           800: { value: '#032d35' },
           900: { value: '#02171b' },
         },
+				backgroundDark: { value: '#212830' },
       },
     },
     semanticTokens: {
       colors: {
         bg: {
-          value: { _light: 'white', _dark: '#212830' },
+          value: { _light: 'white', _dark: "{colors.backgroundDark}" },
         },
         text: {
           value: { _light: 'gray.900', _dark: 'white' },
@@ -35,10 +36,13 @@ const customConfig = defineConfig({
           value: { _light: 'gray.600', _dark: 'gray.400' },
         },
         border: {
-          value: { _light: 'gray.200', _dark: 'gray.700' },
+          value: { _light: "{colors.gray.800}", _dark: "{colors.gray.200}" },
         },
+				borderActive: {
+					value: { _light: "{colors.gray.500}", _dark: "{colors.gray.500}" },
+				},
         cardBg: {
-          value: { _light: 'white', _dark: '#2a3441' },
+          value: { _light: 'white', _dark: "{colors.brand.900}" },
         },
         navBg: {
           value: { 
@@ -47,7 +51,7 @@ const customConfig = defineConfig({
           },
         },
 				buttonBg: {
-					value: { _light: 'black', _dark: 'white' },
+					value: { _light: '{colors.gray.700}', _dark: '{colors.gray.300}' },
 				},
       },
     },
