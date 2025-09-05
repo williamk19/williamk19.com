@@ -89,8 +89,11 @@ export default function IndexHero() {
 								right={0}>
 								<Tooltip
 									open={isTooltipOpen}
-									content={'Hello 👋!'}
-									aria-label='A tooltip'>
+									content={`Hi, let's connect 👋`}
+									aria-label='A tooltip'
+									positioning={{
+										placement: 'bottom-end',
+									}}>
 									<IconButton
 										aria-label='chat tooltip'
 										onMouseEnter={() => setIsTooltipOpen(true)}
