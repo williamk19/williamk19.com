@@ -53,6 +53,9 @@ const customConfig = defineConfig({
 				buttonBg: {
 					value: { _light: '{colors.gray.700}', _dark: '{colors.gray.300}' },
 				},
+				navLinkUnderline: {
+					value: { _light: '{colors.gray.900}', _dark: '{colors.gray.100}' },
+				},
       },
     },
   },
