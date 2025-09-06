@@ -8,7 +8,6 @@ import { useColorMode } from '../ui/color-mode';
 import { useEffect, useState } from 'react';
 
 export default function Navbar() {
-	const { colorMode } = useColorMode();
 	const { pathname } = useRouter();
 	const [topPosition, setTopPosition] = useState(8);
 
@@ -79,7 +78,7 @@ export default function Navbar() {
 								left: '0%',
 								height: '2px',
 								width: pathname === '/' ? '100%' : '0%',
-								backgroundColor: colorMode === 'light' ? '#000' : '#fff',
+								backgroundColor: 'navLinkUnderline',
 								display: 'block',
 								content: '""',
 								transition: 'width 0.3s, background-color 0.5s ease-out',
