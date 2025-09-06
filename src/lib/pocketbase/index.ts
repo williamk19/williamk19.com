@@ -1,5 +1,6 @@
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
+const pbUrl = process.env.NEXT_PUBLIC_PB_URL || 'https://pb.williamk19.com';
+const pb = new PocketBase(pbUrl);
 
 export default pb;

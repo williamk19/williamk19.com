@@ -50,27 +50,42 @@ export default function Page({ blog }: BlogPageProps) {
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { slug } = context.params as ParamsType;
 
-  const blog = await pb
-    .collection<Blog>('blogs')
-    .getFirstListItem(`slug="${slug}"`);
+  try {
+    const blog = await pb
+      .collection<Blog>('blogs')
+      .getFirstListItem(`slug="${slug}"`);
 
-  return {
-    props: {
-      blog,
-    },
-    revalidate: 600
-  };
+    return {
+      props: {
+        blog,
+      },
+      revalidate: 600
+    };
+  } catch (error) {
+    console.error('Failed to fetch blog:', error);
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export const getStaticPaths = async () => {
-  const blogs = await pb.collection<Blog>('blogs').getFullList();
+  try {
+    const blogs = await pb.collection<Blog>('blogs').getFullList();
 
-  const paths = blogs.map((blog) => ({
-    params: { slug: blog.slug },
-  }));
+    const paths = blogs.map((blog) => ({
+      params: { slug: blog.slug },
+    }));
 
-  return {
-    paths,
-    fallback: 'blocking',
-  };
+    return {
+      paths,
+      fallback: 'blocking',
+    };
+  } catch (error) {
+    console.error('Failed to fetch blogs for static paths:', error);
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  }
 };

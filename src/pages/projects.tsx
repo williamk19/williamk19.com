@@ -20,14 +20,24 @@ export default function Projects({ projects }: ProjectsProps) {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const projects = await pb.collection<Project>('projects').getFullList({
-    sort: '-created',
-  });
+  try {
+    const projects = await pb.collection<Project>('projects').getFullList({
+      sort: '-created',
+    });
 
-  return {
-    props: {
-      projects,
-    },
-    revalidate: 60,
-  };
+    return {
+      props: {
+        projects,
+      },
+      revalidate: 60,
+    };
+  } catch (error) {
+    console.error('Failed to fetch projects:', error);
+    return {
+      props: {
+        projects: [],
+      },
+      revalidate: 60,
+    };
+  }
 }
