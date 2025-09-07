@@ -17,14 +17,24 @@ export default function Blogs({ blogs }: BlogsProps) {
 }
 
 export async function getStaticProps() {
-  const blogs = await pb.collection<Blog>('blogs').getFullList({
-    sort: '-created',
-  });
+  try {
+    const blogs = await pb.collection<Blog>('blogs').getFullList({
+      sort: '-created',
+    });
 
-  return {
-    props: {
-      blogs,
-    },
-    revalidate: 60,
-  };
+    return {
+      props: {
+        blogs,
+      },
+      revalidate: 60,
+    };
+  } catch (error) {
+    console.error('Failed to fetch blogs:', error);
+    return {
+      props: {
+        blogs: [],
+      },
+      revalidate: 60,
+    };
+  }
 }
