@@ -50,16 +50,23 @@ export default function Page({ blog }: BlogPageProps) {
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { slug } = context.params as ParamsType;
 
-  const blog = await pb
-    .collection<Blog>('blogs')
-    .getFirstListItem(`slug="${slug}"`);
+	try {
+		const blog = await pb
+			.collection<Blog>('blogs')
+			.getFirstListItem(`slug="${slug}"`);
 
-  return {
-    props: {
-      blog,
-    },
-    revalidate: 600
-  };
+		return {
+			props: {
+				blog,
+			},
+			revalidate: 600
+		};
+	} catch {
+		return {
+      notFound: true,
+      revalidate: 600,
+    };
+	}
 };
 
 export const getStaticPaths = async () => {

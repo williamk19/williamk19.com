@@ -27,7 +27,8 @@ export default function BlogsLayout({ blogs }: BlogsLayoutProps) {
         <Box
           py={3}
           w='100%'
-          color='white'>
+          color='white'
+					spaceY={8}>
           {blogs.map((b) => (
             <BlogsCard
               key={b.id}
