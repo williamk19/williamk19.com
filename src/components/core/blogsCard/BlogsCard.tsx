@@ -45,7 +45,6 @@ export default function BlogsCard({ blog }: BlogCardProps) {
   return (
     <>
       <Card.Root
-        mb={2}
         bg={'transparent'}
         border={`3px solid`}
         borderColor={`${colorMode === 'light' ? 'black' : 'cyan.800'}`}
@@ -57,20 +56,21 @@ export default function BlogsCard({ blog }: BlogCardProps) {
         <Stack direction={['column', 'row']}>
           <Box
             height={{ base: '28vw', sm: 'unset' }}
-            width={{ sm: '100%' }}
+            width={{ base: '100%', sm: '40%' }}
             maxWidth={{ base: '100%', sm: '200px' }}
             position={'relative'}>
             <Image
               style={{
                 objectFit: 'cover',
-                overflow: 'hidden',
               }}
               fill
               src={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
               alt={`${blog.slug}-heading-image`}
             />
           </Box>
-          <Box>
+          <Box
+						width={{ base: '100%', sm: '60%', md: "80%"}}
+					>
             <CardBody>
               <Heading size='md'>{blog.title}</Heading>
               <Text py='1'>{getPublishedDate(blog.published)}</Text>

@@ -18,7 +18,8 @@ export default function Blogs({ blogs }: BlogsProps) {
 
 export async function getStaticProps() {
   const blogs = await pb.collection<Blog>('blogs').getFullList({
-    sort: '-created',
+    sort: '-published',
+		filter: 'is_draft = false'
   });
 
   return {
