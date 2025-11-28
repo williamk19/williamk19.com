@@ -70,14 +70,24 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 };
 
 export const getStaticPaths = async () => {
-  const blogs = await pb.collection<Blog>('blogs').getFullList();
+  try {
+    const blogs = await pb.collection<Blog>('blogs').getFullList();
 
-  const paths = blogs.map((blog) => ({
-    params: { slug: blog.slug },
-  }));
+    const paths = blogs.map((blog) => ({
+      params: { slug: blog.slug },
+    }));
 
-  return {
-    paths,
-    fallback: 'blocking',
-  };
+    return {
+      paths,
+      fallback: 'blocking',
+    };
+  } catch (error) {
+    console.error('Error fetching blogs for static paths:', error);
+    
+    // Return empty paths and rely on fallback: 'blocking'
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  }
 };
