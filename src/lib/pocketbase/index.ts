@@ -1,8 +1,11 @@
 import PocketBase from "pocketbase";
 
-const token = process.env.NEXT_PUBLIC_PB_TOKEN;
+const username = process.env.NEXT_PUBLIC_PB_USERNAME;
+const password = process.env.NEXT_PUBLIC_PB_PASSWORD;
 
 const pb = new PocketBase(process.env.NEXT_PUBLIC_PB_URL);
-pb.authStore.save(token!, null);
+const authData = await pb
+    .collection("users")
+    .authWithPassword(username!, password!);
 
 export default pb;
